@@ -391,11 +391,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Kotlin与Java-混合编程"><a href="#Kotlin与Java-混合编程" class="headerlink" title="Kotlin与Java 混合编程"></a>Kotlin与Java 混合编程</h1><h2 id="Kotlin与Java的类型映射"><a href="#Kotlin与Java的类型映射" class="headerlink" title="Kotlin与Java的类型映射"></a>Kotlin与Java的类型映射</h2><h3 id="Kotlin-对-Java基本数据类型的映射"><a href="#Kotlin-对-Java基本数据类型的映射" class="headerlink" title="Kotlin 对 Java基本数据类型的映射"></a>Kotlin 对 Java基本数据类型的映射</h3><p>Kotlin 特殊处理一部分 Java 类型。这样的类型不是“按原样”从 Java 加载，而是 映射 到相应的 Kotlin 类型。 映射只发生在编译期间，运行时表示保持不变。<br>Java 的原生类型映射到相应的 Kotlin 类型：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181726.png" alt></p>
-<h3 id="Kotlin-对-Java-包装类型的映射"><a href="#Kotlin-对-Java-包装类型的映射" class="headerlink" title="Kotlin 对 Java 包装类型的映射"></a>Kotlin 对 Java 包装类型的映射</h3><p>Java包装类是对Java基本数据类型的包装，Java包装类可以有空值，所以映射到Kotlin数据类型时是可空类型。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181211.png" alt></p>
-<h3 id="Kotlin-对-Java-常用类型的映射"><a href="#Kotlin-对-Java-常用类型的映射" class="headerlink" title="Kotlin 对 Java 常用类型的映射"></a>Kotlin 对 Java 常用类型的映射</h3><p>Java 声明的类型在 Kotlin 中会被特别对待并称为”平台类型”。Kotlin语法中并没有平台类型的表示方式，但是在IntelliJ IDEA等IDE工具或一些文档中采用“数据类型!”方式表示。<br>比如String!表示法被Kotlin编译器用来表示来自Java代码的平台类型。你不能在自己的代码中使用这样的语法。而且感叹号只是强调类型的可空性是未知的。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181235.png" alt><br>&nbsp;<br>Java常用类是位于java.lang中一些核心类，它们映射到Kotlin数据类型时是非空或可空类型。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181245.png" alt></p>
-<h3 id="Kotlin-对-Java-集合类型的映射"><a href="#Kotlin-对-Java-集合类型的映射" class="headerlink" title="Kotlin 对 Java 集合类型的映射"></a>Kotlin 对 Java 集合类型的映射</h3><p>Java集合类型是映射到Kotlin数据类型如下表所示。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181255.png" alt><br>从表中可见Java集合不区分只读和可变类型，而Kotlin中有这样的区别。<br>在表中还有一种平台类型，在混合编程时Kotlin将它们看作可空或非空类型。<br>例如：<br>平台类型(Mutable)Iterator<t>!表示的是Iterator<t>、Iterator<t>?、MutableIterator<t>和MutableIterator<t>?四种可能性。<br>(Mutable)Collection<t>! 表示“可变或不可变、可空或不可空的 T 的 Java 集合”。<br>示例：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181305.png" alt><br>&nbsp;<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181314.png" alt></t></t></t></t></t></t></p>
-<h3 id="Kotlin-对-Java-数组的映射"><a href="#Kotlin-对-Java-数组的映射" class="headerlink" title="Kotlin 对 Java 数组的映射"></a>Kotlin 对 Java 数组的映射</h3><p>与 Java 不同，Kotlin 中的数组是不型变的。<br>这意味着 Kotlin 不允许我们把一个 Array<string> 赋值给一个 Array<any>， 从而避免了可能的运行时故障。<br>Kotlin 也禁止我们把一个子类的数组当做超类的数组传递给 Kotlin 的方法，<br>但是对于 Java，这是允许的（通过 Array&lt;(out) String&gt;! 这种形式的平台类型）。<br>&nbsp;<br>在Java 平台上，数组会使用原生数据类型以避免装箱/拆箱操作的开销。<br>由于 Kotlin 隐藏了这些实现细节，因此需要一个变通方法来与 Java 代码进行交互。<br>对于每种原生类型的数组都有一个特化的类（IntArray、 DoubleArray、 CharArray 等等）来处理这种情况。<br>它们与 Array 类无关，并且会编译成 Java 原生类型数组以获得最佳性能。<br>&nbsp;<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181323.png" alt><br>Array&lt;(out) T&gt;! 表示“可空或者不可空的 T（或 T 的子类型）的 Java 数组”。<br>例子：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181333.png" alt><br>&nbsp;<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181343.png" alt></any></string></p>
+                <h1 id="Kotlin与Java-混合编程"><a href="#Kotlin与Java-混合编程" class="headerlink" title="Kotlin与Java 混合编程"></a>Kotlin与Java 混合编程</h1><h2 id="Kotlin与Java的类型映射"><a href="#Kotlin与Java的类型映射" class="headerlink" title="Kotlin与Java的类型映射"></a>Kotlin与Java的类型映射</h2><h3 id="Kotlin-对-Java基本数据类型的映射"><a href="#Kotlin-对-Java基本数据类型的映射" class="headerlink" title="Kotlin 对 Java基本数据类型的映射"></a>Kotlin 对 Java基本数据类型的映射</h3><p>Kotlin 特殊处理一部分 Java 类型。这样的类型不是“按原样”从 Java 加载，而是 映射 到相应的 Kotlin 类型。 映射只发生在编译期间，运行时表示保持不变。<br>Java 的原生类型映射到相应的 Kotlin 类型：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181726.png" alt></p>
+<h3 id="Kotlin-对-Java-包装类型的映射"><a href="#Kotlin-对-Java-包装类型的映射" class="headerlink" title="Kotlin 对 Java 包装类型的映射"></a>Kotlin 对 Java 包装类型的映射</h3><p>Java包装类是对Java基本数据类型的包装，Java包装类可以有空值，所以映射到Kotlin数据类型时是可空类型。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181211.png" alt></p>
+<h3 id="Kotlin-对-Java-常用类型的映射"><a href="#Kotlin-对-Java-常用类型的映射" class="headerlink" title="Kotlin 对 Java 常用类型的映射"></a>Kotlin 对 Java 常用类型的映射</h3><p>Java 声明的类型在 Kotlin 中会被特别对待并称为”平台类型”。Kotlin语法中并没有平台类型的表示方式，但是在IntelliJ IDEA等IDE工具或一些文档中采用“数据类型!”方式表示。<br>比如String!表示法被Kotlin编译器用来表示来自Java代码的平台类型。你不能在自己的代码中使用这样的语法。而且感叹号只是强调类型的可空性是未知的。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181235.png" alt><br>&nbsp;<br>Java常用类是位于java.lang中一些核心类，它们映射到Kotlin数据类型时是非空或可空类型。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181245.png" alt></p>
+<h3 id="Kotlin-对-Java-集合类型的映射"><a href="#Kotlin-对-Java-集合类型的映射" class="headerlink" title="Kotlin 对 Java 集合类型的映射"></a>Kotlin 对 Java 集合类型的映射</h3><p>Java集合类型是映射到Kotlin数据类型如下表所示。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181255.png" alt><br>从表中可见Java集合不区分只读和可变类型，而Kotlin中有这样的区别。<br>在表中还有一种平台类型，在混合编程时Kotlin将它们看作可空或非空类型。<br>例如：<br>平台类型(Mutable)Iterator<t>!表示的是Iterator<t>、Iterator<t>?、MutableIterator<t>和MutableIterator<t>?四种可能性。<br>(Mutable)Collection<t>! 表示“可变或不可变、可空或不可空的 T 的 Java 集合”。<br>示例：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181305.png" alt><br>&nbsp;<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181314.png" alt></t></t></t></t></t></t></p>
+<h3 id="Kotlin-对-Java-数组的映射"><a href="#Kotlin-对-Java-数组的映射" class="headerlink" title="Kotlin 对 Java 数组的映射"></a>Kotlin 对 Java 数组的映射</h3><p>与 Java 不同，Kotlin 中的数组是不型变的。<br>这意味着 Kotlin 不允许我们把一个 Array<string> 赋值给一个 Array<any>， 从而避免了可能的运行时故障。<br>Kotlin 也禁止我们把一个子类的数组当做超类的数组传递给 Kotlin 的方法，<br>但是对于 Java，这是允许的（通过 Array&lt;(out) String&gt;! 这种形式的平台类型）。<br>&nbsp;<br>在Java 平台上，数组会使用原生数据类型以避免装箱/拆箱操作的开销。<br>由于 Kotlin 隐藏了这些实现细节，因此需要一个变通方法来与 Java 代码进行交互。<br>对于每种原生类型的数组都有一个特化的类（IntArray、 DoubleArray、 CharArray 等等）来处理这种情况。<br>它们与 Array 类无关，并且会编译成 Java 原生类型数组以获得最佳性能。<br>&nbsp;<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181323.png" alt><br>Array&lt;(out) T&gt;! 表示“可空或者不可空的 T（或 T 的子类型）的 Java 数组”。<br>例子：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181333.png" alt><br>&nbsp;<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181343.png" alt></any></string></p>
 <h3 id="Kotlin-对-Java-泛型的映射"><a href="#Kotlin-对-Java-泛型的映射" class="headerlink" title="Kotlin 对 Java 泛型的映射"></a>Kotlin 对 Java 泛型的映射</h3><p>当带有泛型参数的 Java 类型导入 Kotlin 时，会执行一些转换：</p>
 <ul>
 <li>Java 的通配符转换成类型投影<ul>
@@ -412,7 +412,7 @@
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token keyword">is</span> List<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 错误：无法检查它是否真的是一个 Int 列表</span>
 <span class="token comment" spellcheck="true">// but</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token keyword">is</span> List<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// OK：不保证列表的内容</span></code></pre>
-<p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181351.png" alt> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181351.png" alt> </p>
 <h2 id="在Kotlin中调用Java"><a href="#在Kotlin中调用Java" class="headerlink" title="在Kotlin中调用Java"></a>在Kotlin中调用Java</h2><h3 id="避免Kotlin关键字"><a href="#避免Kotlin关键字" class="headerlink" title="避免Kotlin关键字"></a>避免Kotlin关键字</h3><p>在Java代码中给标识符命名时可能没有考虑到哪些Kotlin的关键字。<br>但当在Kotlin中调用这样的Java代码时，则需要将这些关键字用反引号括起来。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyJavaClass</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> MyJavaClass object <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyJavaClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -463,7 +463,7 @@
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> javaObj <span class="token operator">=</span> <span class="token function">JavaArrayExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">val</span> array <span class="token operator">=</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 javaObj<span class="token punctuation">.</span><span class="token function">removeIndicesVarArg</span><span class="token punctuation">(</span><span class="token operator">*</span>array<span class="token punctuation">)</span></code></pre>
-<p>目前Kotlin无法传递 null 给一个声明为可变参数的方法。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181400.png" alt></p>
+<p>目前Kotlin无法传递 null 给一个声明为可变参数的方法。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181400.png" alt></p>
 <blockquote>
 <p>详细参考：<a href="https://www.kotlincn.net/docs/reference/java-interop.html" target="_blank" rel="noopener">Kotlin 中调用 Java</a></p>
 </blockquote>
@@ -602,7 +602,7 @@ ChatBot<span class="token punctuation">.</span><span class="token function">gree
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>在Java中可见性有：private、protected、default（包私有）和 public。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181409.png" alt><br>&nbsp;<br>在 Kotlin 中有这四个可见性修饰符：private、 protected、 internal（内部可见） 和 public。<br>如果没有显式指定修饰符的话，默认可见性是 public。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181419.png" alt><br>Java和Kotlin都有4种可见性，但Kotlin中没有默认包私有可见性，而Java中没有内部可见性。<br>Java和Kotlin除了public完全兼容外，其他的可见性都是有所区别的。详细解释说明如下：</p>
+<h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>在Java中可见性有：private、protected、default（包私有）和 public。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181409.png" alt><br>&nbsp;<br>在 Kotlin 中有这四个可见性修饰符：private、 protected、 internal（内部可见） 和 public。<br>如果没有显式指定修饰符的话，默认可见性是 public。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181419.png" alt><br>Java和Kotlin都有4种可见性，但Kotlin中没有默认包私有可见性，而Java中没有内部可见性。<br>Java和Kotlin除了public完全兼容外，其他的可见性都是有所区别的。详细解释说明如下：</p>
 <h4 id="Kotlin私有可见性"><a href="#Kotlin私有可见性" class="headerlink" title="Kotlin私有可见性"></a>Kotlin私有可见性</h4><p>由于Kotlin私有可见性可以声明类，类中成员，也可以声明顶层成员。<br>那么映射到Java分为三种情况：</p>
 <ul>
 <li>Kotlin类中私有成员映射到Java类中私有实例成员。 </li>
@@ -616,9 +616,9 @@ ChatBot<span class="token punctuation">.</span><span class="token function">gree
           System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person2<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//Jack</span>
       <span class="token punctuation">}</span>
   <span class="token punctuation">}</span></code></pre>
-  <img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181428.png" alt></li>
+  <img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181428.png" alt></li>
 </ul>
-<h4 id="Kotlin内部可见性"><a href="#Kotlin内部可见性" class="headerlink" title="Kotlin内部可见性"></a>Kotlin内部可见性</h4><p>由于Java中没有内部可见性，那么在相同的模块下，Kotlin内部可见性映射为Java公有可见性。但不同模块下无法访问。<br>&nbsp;<br>Java代码访问Kotlin代码：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181436.png" alt><br>Kotlin代码访问Kotlin代码：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181445.png" alt></p>
+<h4 id="Kotlin内部可见性"><a href="#Kotlin内部可见性" class="headerlink" title="Kotlin内部可见性"></a>Kotlin内部可见性</h4><p>由于Java中没有内部可见性，那么在相同的模块下，Kotlin内部可见性映射为Java公有可见性。但不同模块下无法访问。<br>&nbsp;<br>Java代码访问Kotlin代码：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181436.png" alt><br>Kotlin代码访问Kotlin代码：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181445.png" alt></p>
 <h4 id="Kotlin保护可见性"><a href="#Kotlin保护可见性" class="headerlink" title="Kotlin保护可见性"></a>Kotlin保护可见性</h4><p>Kotlin保护可见性映射为Java保护可见性。</p>
 <h4 id="Kotlin公有可见性"><a href="#Kotlin公有可见性" class="headerlink" title="Kotlin公有可见性"></a>Kotlin公有可见性</h4><p>Kotlin公有可见性映射为Java公有可见性。<br>Kotin类声明：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> kt<span class="token punctuation">.</span>bean
@@ -658,7 +658,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 
 <span class="token comment" spellcheck="true">//访问Kotlin中内部可见性的顶层属性MAX_COUNTS</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>EmployeeKt<span class="token punctuation">.</span>MAX_COUNTS<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>注意：Kotlin中内部可见性类成员，会生成比较复杂的函数名字，在IDE工具中这个函数语法存在，但是编译是无法通过。<br>这源自于Kotlin内部可见性与Java可见性的兼容问题，事实上在目前的Kotlin这个版本上Java不能访问Kotlin内部可见性类成员，但可以访问内部可见性的类和内部可见性是顶层成员。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181454.png" alt></p>
+<p>注意：Kotlin中内部可见性类成员，会生成比较复杂的函数名字，在IDE工具中这个函数语法存在，但是编译是无法通过。<br>这源自于Kotlin内部可见性与Java可见性的兼容问题，事实上在目前的Kotlin这个版本上Java不能访问Kotlin内部可见性类成员，但可以访问内部可见性的类和内部可见性是顶层成员。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181454.png" alt></p>
 <h3 id="生成重载函数"><a href="#生成重载函数" class="headerlink" title="生成重载函数"></a>生成重载函数</h3><p>Kotlin的函数参数可以设置默认值，看起来像多个函数重载一样。但Java中并不支持参数默认值，只能支持全部参数函数。<br>为了解决这个问题可以在Kotlin函数前使用@JvmOverloads注解，Kotlin编译器会生成多个重载函数。<br>@JvmOverloads注解的函数可以是：构造函数、成员函数和顶层函数，但不能是抽象函数。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> over<span class="token punctuation">.</span>load
 
@@ -726,7 +726,7 @@ ExceptionDemoKt<span class="token punctuation">.</span><span class="token functi
 <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ParseException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>在Java代码中，Kotlin这种处理异常的行为不符合Java的习惯，也不安全。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181503.png" alt></p>
+<p>在Java代码中，Kotlin这种处理异常的行为不符合Java的习惯，也不安全。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181503.png" alt></p>
 <p>为此可以在Kotlin的函数前加上@Throws注解，修改Kotlin代码如下：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">//在readDate函数前添加注解@Throws(ParseException::class)，其中ParseException需要处理的异常类</span>
 <span class="token annotation builtin">@Throws</span><span class="token punctuation">(</span>ParseException<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span>
@@ -744,24 +744,24 @@ ExceptionDemoKt<span class="token punctuation">.</span><span class="token functi
 <blockquote>
 <p>详细参考：<a href="https://www.kotlincn.net/docs/reference/java-to-kotlin-interop.html" target="_blank" rel="noopener">Java 中调用 Kotlin</a></p>
 </blockquote>
-<h2 id="Kotlin与Java的简单实例对比"><a href="#Kotlin与Java的简单实例对比" class="headerlink" title="Kotlin与Java的简单实例对比"></a>Kotlin与Java的简单实例对比</h2><h3 id="打印日志"><a href="#打印日志" class="headerlink" title="打印日志"></a>打印日志</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551256658495.png" alt></p>
-<h3 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551256755198.png" alt></p>
-<h3 id="null声明"><a href="#null声明" class="headerlink" title="null声明"></a>null声明</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551256852127.png" alt></p>
-<h3 id="空判断"><a href="#空判断" class="headerlink" title="空判断"></a>空判断</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551256870871.png" alt></p>
-<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551256934360.png" alt></p>
-<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551256970261.png" alt></p>
-<h3 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257045871.png" alt></p>
-<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257049976.png" alt></p>
-<h3 id="类型判断和转换（显式）"><a href="#类型判断和转换（显式）" class="headerlink" title="类型判断和转换（显式）"></a>类型判断和转换（显式）</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257054047.png" alt></p>
-<h3 id="类型判断和转换（隐式）"><a href="#类型判断和转换（隐式）" class="headerlink" title="类型判断和转换（隐式）"></a>类型判断和转换（隐式）</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257156046.png" alt></p>
-<h3 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257166446.png" alt></p>
-<h3 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257170070.png" alt></p>
-<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257174789.png" alt></p>
-<h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257178765.png" alt></p>
-<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257419126.png" alt></p>
-<h3 id="方法（函数）定义"><a href="#方法（函数）定义" class="headerlink" title="方法（函数）定义"></a>方法（函数）定义</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257488776.png" alt></p>
-<h3 id="带返回值的方法（函数）"><a href="#带返回值的方法（函数）" class="headerlink" title="带返回值的方法（函数）"></a>带返回值的方法（函数）</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257493574.png" alt></p>
-<h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551257723607.png" alt></p>
+<h2 id="Kotlin与Java的简单实例对比"><a href="#Kotlin与Java的简单实例对比" class="headerlink" title="Kotlin与Java的简单实例对比"></a>Kotlin与Java的简单实例对比</h2><h3 id="打印日志"><a href="#打印日志" class="headerlink" title="打印日志"></a>打印日志</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551256658495.png" alt></p>
+<h3 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551256755198.png" alt></p>
+<h3 id="null声明"><a href="#null声明" class="headerlink" title="null声明"></a>null声明</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551256852127.png" alt></p>
+<h3 id="空判断"><a href="#空判断" class="headerlink" title="空判断"></a>空判断</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551256870871.png" alt></p>
+<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551256934360.png" alt></p>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551256970261.png" alt></p>
+<h3 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257045871.png" alt></p>
+<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257049976.png" alt></p>
+<h3 id="类型判断和转换（显式）"><a href="#类型判断和转换（显式）" class="headerlink" title="类型判断和转换（显式）"></a>类型判断和转换（显式）</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257054047.png" alt></p>
+<h3 id="类型判断和转换（隐式）"><a href="#类型判断和转换（隐式）" class="headerlink" title="类型判断和转换（隐式）"></a>类型判断和转换（隐式）</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257156046.png" alt></p>
+<h3 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257166446.png" alt></p>
+<h3 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257170070.png" alt></p>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257174789.png" alt></p>
+<h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257178765.png" alt></p>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257419126.png" alt></p>
+<h3 id="方法（函数）定义"><a href="#方法（函数）定义" class="headerlink" title="方法（函数）定义"></a>方法（函数）定义</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257488776.png" alt></p>
+<h3 id="带返回值的方法（函数）"><a href="#带返回值的方法（函数）" class="headerlink" title="带返回值的方法（函数）"></a>带返回值的方法（函数）</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257493574.png" alt></p>
+<h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551257723607.png" alt></p>
 
             </div>
             <hr/>
@@ -1243,7 +1243,7 @@ ExceptionDemoKt<span class="token punctuation">.</span><span class="token functi
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">22.2k</span>
+                <span class="white-color">22.1k</span>
             
             <br/>
             <span id="sitetime"></span>

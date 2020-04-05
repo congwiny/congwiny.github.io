@@ -451,21 +451,21 @@
 </li>
 </ul>
 <h2 id="协程概念"><a href="#协程概念" class="headerlink" title="协程概念"></a>协程概念</h2><p>协程是一种非抢占式或者说协作式的计算机程序并发调度的实现，程序可以主动挂起或者恢复执行。</p>
-<p>协程和线程，进程不同，它通常不是由操作系统底层直接支持，而是通过编译器和应用层的库实现。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/kotlin_share_img1.png" alt></p>
+<p>协程和线程，进程不同，它通常不是由操作系统底层直接支持，而是通过编译器和应用层的库实现。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/kotlin_share_img1.png" alt></p>
 <h2 id="Kotlin协程框程架"><a href="#Kotlin协程框程架" class="headerlink" title="Kotlin协程框程架"></a>Kotlin协程框程架</h2><p>协程正式版1.0在Kotlin 1.3 上发布，协程的语言支持与 API 已完全稳定。<br>此后 kotlin 协程不再会被标注为 <strong>experimental</strong>，在 Kotlin 1.3. 之后的版本就可以使用协程代码了。</p>
 <h3 id="引入协程库"><a href="#引入协程库" class="headerlink" title="引入协程库"></a>引入协程库</h3><pre class=" language-gradle"><code class="language-gradle">dependencies {
   implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.2'
 }</code></pre>
-<p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/kotlin_share_img2.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/kotlin_share_img2.png" alt></p>
 <h3 id="协程基本术语"><a href="#协程基本术语" class="headerlink" title="协程基本术语"></a>协程基本术语</h3><ul>
 <li><strong>协程</strong>（coroutine）<br>可挂起计算的实例。它在概念上类似于线程，在这个意义上，它需要一个代码块运行，并具有类似的生命周期 —— 它可以被创建与启动，但它不绑定到任何特定的线程。<br>它可以在一个线程中挂起其执行，并在另一个线程中恢复。而且，像 <strong>future</strong> 或 <strong>promise</strong> 那样，它在执行结束时可能返回某种结果（值或异常）。<br>&nbsp;</li>
 <li><strong>挂起函数</strong>（suspending function）</li>
 </ul>
-<p><strong>suspend</strong> 修饰符标记的函数。它可能会通过调用其他 <strong>挂起函数</strong> 挂起执行代码，而不阻塞当前执行线程。<br><strong>挂起函数</strong> 不能在常规代码中被调用，只能在其他 <strong>挂起函数</strong> 或 <strong>挂起 lambda 表达式</strong> 中。<br>在 Android Studio 中 <strong>挂起函数</strong> 旁边会有一个特殊的标记符号，告诉开发者这是一个 <strong>挂起函数</strong>。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153302.png" alt><br>&nbsp;</p>
+<p><strong>suspend</strong> 修饰符标记的函数。它可能会通过调用其他 <strong>挂起函数</strong> 挂起执行代码，而不阻塞当前执行线程。<br><strong>挂起函数</strong> 不能在常规代码中被调用，只能在其他 <strong>挂起函数</strong> 或 <strong>挂起 lambda 表达式</strong> 中。<br>在 Android Studio 中 <strong>挂起函数</strong> 旁边会有一个特殊的标记符号，告诉开发者这是一个 <strong>挂起函数</strong>。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153302.png" alt><br>&nbsp;</p>
 <ul>
 <li><strong>挂起 lambda 表达式</strong>（suspending lambda）<br>必须在 <strong>协程</strong> 中运行的代码块。它看起来很像一个普通的 lambda 表达式，但它的函数类型被 <strong>suspend</strong> 修饰符标记。</li>
 </ul>
-<p><strong>挂起 lambda 表达式</strong> 是 <strong>匿名挂起函数</strong> 的短语法形式。它可能会通过调用其他 <strong>挂起函数</strong> 挂起执行代码，而不阻塞当前执行线程。<br>&nbsp;<br>比如Kotlin协程库的 <strong>launch</strong> 函数的最后一个参数就是 <strong>挂起 lambda 表达式</strong>。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153321.png" alt><br><strong>suspend CoroutineScope.() -&gt; Unit</strong>，这个类型被称之为 <strong>挂起函数类型</strong>。 (suspending function type)</p>
+<p><strong>挂起 lambda 表达式</strong> 是 <strong>匿名挂起函数</strong> 的短语法形式。它可能会通过调用其他 <strong>挂起函数</strong> 挂起执行代码，而不阻塞当前执行线程。<br>&nbsp;<br>比如Kotlin协程库的 <strong>launch</strong> 函数的最后一个参数就是 <strong>挂起 lambda 表达式</strong>。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153321.png" alt><br><strong>suspend CoroutineScope.() -&gt; Unit</strong>，这个类型被称之为 <strong>挂起函数类型</strong>。 (suspending function type)</p>
 <p>&nbsp;</p>
 <ul>
 <li><strong>协程构建器</strong>（coroutine builder）<br>使用一些 <strong>挂起 lambda 表达式</strong> 作为参数来创建一个 <strong>协程</strong> 的函数。<br>Kotlin 定义了一些基础的构建 <strong>协程</strong> 的函数，比如 <strong>launch{}</strong>、<strong>future{}</strong> 、 <strong>sequence{}</strong> 等。<br>使用这些基础的 <strong>建构函数</strong> 可以构造其他 <strong>协程</strong> 实例。</li>
@@ -601,7 +601,7 @@
 </tbody></table>
 <p>一般而言，<strong>Job</strong> 创建后都处于 <strong>active</strong> 状态，表示这个 <strong>Job</strong> 已经被创建并且被启动了。<br>通过 <strong>协程构建器</strong> 函数的 <strong>start</strong> 参数可以修改这个状态。<br>比如如果使用 <strong>CoroutineStart.LAZY</strong> 作为 <strong>start</strong> 参数，则创建的 <strong>Job</strong> 处于 <strong>new</strong> 状态，<br>这个时候需要通过调用 <strong>Job</strong> 的 <strong>start</strong> 或者 <strong>join</strong> 函数来把该 <strong>Job</strong> 转换为 <strong>active</strong> 状态。</p>
 <p>处于 <strong>active</strong> 状态的 <strong>Job</strong> 表示 协程 正在执行。<br>如果执行过程中抛出了异常则会把该 <strong>Job</strong> 标记为 <strong>cancelling</strong> 状态。<br>除此之外，还可以通过调用 <strong>cancel</strong> 函数来把 <strong>Job</strong> 转换为 <strong>cancelling</strong> 状态。<br>然后当 <strong>Job</strong> 完成后就处于 <strong>cancelled</strong> 状态。</p>
-<p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153314.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153314.png" alt></p>
 <p>具有多个子 <strong>Job</strong> 的父 <strong>Job</strong> 会等待所有子 <strong>job</strong> 完成(或者取消)后，自己才会执行完成。</p>
 <p>示例，调用 <strong>cancel</strong> 函数取消协程执行。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">import</span> kotlinx<span class="token punctuation">.</span>coroutines<span class="token punctuation">.</span><span class="token operator">*</span>
@@ -919,7 +919,7 @@ Exception <span class="token keyword">in</span> thread <span class="token string
 <p><strong>CoroutineScope</strong>  是 <strong>kotlinx.coroutines</strong> 提供的一个抽象的封装，用来管理协程的生命周期。</p>
 <p>比如：<br>在Android程序在上下文中启动了多个协程来为某个activity 进行异步操作来拉取以及更新数据，或作动画等。<br>当 activity 被销毁的时候这些协程必须被取消以防止内存泄漏。就需要用到 <strong>CoroutineScope</strong>，<br>这样当这个 <strong>CoroutineScope</strong> 被取消的时候，里面所有的子协程也会自动取消。</p>
 <p>每个协程构建器都是 <strong>CoroutineScope</strong> 的扩展函数，并且自动的继承了当前作用域的 <strong>coroutineContext</strong>。<br>所以要使用协程必须要先创建一个对应的 <strong>CoroutineScope</strong>。</p>
-<p>协程执行代码块的 <strong>this</strong> 字段就代表了当前使用的 <strong>CoroutineScope</strong> 实例。<br>所以就能够在其内部继续启动子协程，比如下面的嵌套的 <strong>launch</strong><br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153317.png" alt></p>
+<p>协程执行代码块的 <strong>this</strong> 字段就代表了当前使用的 <strong>CoroutineScope</strong> 实例。<br>所以就能够在其内部继续启动子协程，比如下面的嵌套的 <strong>launch</strong><br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153317.png" alt></p>
 <ul>
 <li><p>取消与异常<br>取消与异常紧密相关。协程内部使用 <strong>CancellationException</strong> 来进行取消。<br>这个异常会被所有的处理者忽略，所以那些可以被 catch 代码块捕获的异常 仅仅应该被用来作为额外调试信息的资源。<br>例子1：</p>
 <pre class=" language-kotlin"><code class="language-kotlin">  <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> runBlocking <span class="token punctuation">{</span>
@@ -1303,7 +1303,7 @@ Exception <span class="token keyword">in</span> thread <span class="token string
         <span class="token function">block</span><span class="token punctuation">(</span>cancellable<span class="token punctuation">)</span>
         cancellable<span class="token punctuation">.</span><span class="token function">getResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span></code></pre>
-<p>包括其他的可取消的挂起函数都是使用 <strong>suspendCancellableCoroutine</strong> 进行了封装。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153319.png" alt></p>
+<p>包括其他的可取消的挂起函数都是使用 <strong>suspendCancellableCoroutine</strong> 进行了封装。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153319.png" alt></p>
 <p>自定义可取消的挂起函数：</p>
 <p>使用Retrofit创建一个网络请求接口：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">import</span> okhttp3<span class="token punctuation">.</span>OkHttpClient
@@ -1394,7 +1394,7 @@ Exception <span class="token keyword">in</span> thread <span class="token string
 15:53:08:450 [DefaultDispatcher-worker-1] GetUserKt$getUser$2$1.invoke(GetUser.kt:18): invokeOnCancellation: cancel the request.
 15:53:08:453 [DefaultDispatcher-worker-1] ConsoleCancellableKt.main(ConsoleCancellable.kt:17): 3
 15:53:08:454 [OkHttp https://api.github.com/...] GetUserKt$getUser$2$2.onFailure(GetUser.kt:24): onFailure: java.io.IOException: Canceled</code></pre><p>从日志中看到，取消的回调被调用了，OkHttp 也确实停止了网络请求，并且回调给我们一个 IO 异常，这时候我们的协程已经被取消。</p>
-<p>在处于 <strong>取消状态的协程</strong> 上调用 <strong>Continuation.resume</strong> 、 <strong>Continuation.resumeWithException</strong> 或者 <strong>Continuation.resumeWith</strong> 都会被忽略。<br>因此 OkHttp 回调中我们收到 IO 异常后调用的 <strong>continuation.resumeWithException(e)</strong> 不会有任何副作用。<br>&nbsp;<br>Retrofit 2.6.0中使用了协程，也是用了同样的方式。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153318.png" alt></p>
+<p>在处于 <strong>取消状态的协程</strong> 上调用 <strong>Continuation.resume</strong> 、 <strong>Continuation.resumeWithException</strong> 或者 <strong>Continuation.resumeWith</strong> 都会被忽略。<br>因此 OkHttp 回调中我们收到 IO 异常后调用的 <strong>continuation.resumeWithException(e)</strong> 不会有任何副作用。<br>&nbsp;<br>Retrofit 2.6.0中使用了协程，也是用了同样的方式。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153318.png" alt></p>
 <pre class=" language-kotlin"><code class="language-kotlin">suspend <span class="token keyword">fun</span> <span class="token function">launchForEach</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     coroutineScope <span class="token punctuation">{</span>
         launch <span class="token punctuation">{</span>
@@ -1422,10 +1422,10 @@ Exception <span class="token keyword">in</span> thread <span class="token string
 <pre class=" language-gradle"><code class="language-gradle">dependencies {
   implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.2'
 }</code></pre>
-<p><strong>kotlinx-coroutines-android</strong> 依赖的库：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153315.png" alt><br><strong>kotlinx-coroutines-android</strong> 这个库里面的代码很少，协程的大部分实现都在 <strong>kotlinx-coroutines-core</strong> 这个库里。</p>
+<p><strong>kotlinx-coroutines-android</strong> 依赖的库：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153315.png" alt><br><strong>kotlinx-coroutines-android</strong> 这个库里面的代码很少，协程的大部分实现都在 <strong>kotlinx-coroutines-core</strong> 这个库里。</p>
 <p>&nbsp;<br><strong>任务调度器</strong></p>
-<p><strong>kotlinx-coroutines-android</strong> 提供了 <strong>Dispatchers.Main</strong> 调度器 在Android平台上的实现 <strong>HandlerDispatcher</strong>。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153316.png" alt></p>
-<p>可以从源码上看到，任务的调度都是通过 <strong>Handler</strong> 来实现：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829153320.png" alt><br>&nbsp;<br><strong>UI 生命周期作用域</strong></p>
+<p><strong>kotlinx-coroutines-android</strong> 提供了 <strong>Dispatchers.Main</strong> 调度器 在Android平台上的实现 <strong>HandlerDispatcher</strong>。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153316.png" alt></p>
+<p>可以从源码上看到，任务的调度都是通过 <strong>Handler</strong> 来实现：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829153320.png" alt><br>&nbsp;<br><strong>UI 生命周期作用域</strong></p>
 <p>在Android中， 我们想让发出去的请求能够在当前 UI 或者 Activity 退出或者销毁的时候能够自动取消，就要与其生命周期绑定。<br>协程有一个很天然的特性能刚够支持这一点，那就是作用域。官方也提供了 <strong>MainScope</strong> 这个函数。</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
  * Creates the main [CoroutineScope] for UI components.
@@ -2064,7 +2064,7 @@ D/Coroutine: [main] CoroutineActivity$onCreate$3$1.invokeSuspend(CoroutineActivi
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">22.2k</span>
+                <span class="white-color">22.1k</span>
             
             <br/>
             <span id="sitetime"></span>

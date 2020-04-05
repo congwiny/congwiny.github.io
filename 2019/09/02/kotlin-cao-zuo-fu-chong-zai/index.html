@@ -393,7 +393,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="操作符优先级"><a href="#操作符优先级" class="headerlink" title="操作符优先级"></a>操作符优先级</h2><p>Kotlin操作符的优先级如下图所示：<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551270146784.png" alt></p>
+                <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="操作符优先级"><a href="#操作符优先级" class="headerlink" title="操作符优先级"></a>操作符优先级</h2><p>Kotlin操作符的优先级如下图所示：<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551270146784.png" alt></p>
 <p>为实现这些的操作符，Kotlin为二元操作符左侧的类型和一元操作符的参数类型，提供了相应的函数或扩展函数。</p>
 <p>例如在kotlin/core/builtins/native/kotlin/Primitives.kt代码中，对基本类型Int的操作符的实现代码如下：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">public</span> <span class="token keyword">class</span> Int <span class="token keyword">private</span> <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Comparable<span class="token operator">&lt;</span>Int<span class="token operator">></span> <span class="token punctuation">{</span>
@@ -427,7 +427,7 @@
 <span class="token punctuation">}</span></code></pre>
 <h2 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h2><p>从上面代码可以看出，重载操作符的函数需要用operator修饰符标记。</p>
 <h3 id="一元操作"><a href="#一元操作" class="headerlink" title="一元操作"></a>一元操作</h3><p>一元操作符（unary operation），包括前缀、递增和递减</p>
-<h4 id="前缀操作符"><a href="#前缀操作符" class="headerlink" title="前缀操作符"></a>前缀操作符</h4><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551319051663.png" alt><br>例如，当编译器处理表达式+a时，将执行以下步骤：</p>
+<h4 id="前缀操作符"><a href="#前缀操作符" class="headerlink" title="前缀操作符"></a>前缀操作符</h4><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551319051663.png" alt><br>例如，当编译器处理表达式+a时，将执行以下步骤：</p>
 <pre><code>1）确定a的类型，令其为T。
 
 2）为接收者T查找一个带有operator修饰符的无参函数unaryPlus（），即成员函数或扩展函数。
@@ -449,7 +449,7 @@ operator <span class="token keyword">fun</span> Point<span class="token punctuat
      */</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token operator">-</span>p<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//Point(x=-10, y=-20)</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="递增和递减"><a href="#递增和递减" class="headerlink" title="递增和递减"></a>递增和递减</h4><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/1551320247231.png" alt><br>inc()和dec()函数必须返回一个值，它用于赋值给使用++或–操作的变量。<br>编译器解析后缀形式的操作符，例如a++（a–同理)，步骤：</p>
+<h4 id="递增和递减"><a href="#递增和递减" class="headerlink" title="递增和递减"></a>递增和递减</h4><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/1551320247231.png" alt><br>inc()和dec()函数必须返回一个值，它用于赋值给使用++或–操作的变量。<br>编译器解析后缀形式的操作符，例如a++（a–同理)，步骤：</p>
 <pre><code>1）确定a的类型，令其为T。
 
 2）查找一个适用于类型为T的接收者的、带有operator修饰符的无参数函数inc（）。
@@ -462,7 +462,7 @@ operator <span class="token keyword">fun</span> Point<span class="token punctuat
 3）把a_作为表达式的结果返回。</code></pre><p>对于前缀形式++a和–a解析步骤类似，但是返回值是取新值来返回：</p>
 <pre><code>1）把a.inc（）结果赋值给a。
 
-2）把a的新值a+1作为表达式结果返回。</code></pre><h3 id="二元操作"><a href="#二元操作" class="headerlink" title="二元操作"></a>二元操作</h3><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181616.png" alt><br>注意：自 Kotlin 1.1 起支持 rem 运算符。Kotlin 1.0 使用 mod 运算符，它在 Kotlin 1.1 中被弃用。<br>示例：</p>
+2）把a的新值a+1作为表达式结果返回。</code></pre><h3 id="二元操作"><a href="#二元操作" class="headerlink" title="二元操作"></a>二元操作</h3><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181616.png" alt><br>注意：自 Kotlin 1.1 起支持 rem 运算符。Kotlin 1.0 使用 mod 运算符，它在 Kotlin 1.1 中被弃用。<br>示例：</p>
 <pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token keyword">val</span> dayIndex<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     operator <span class="token keyword">fun</span> <span class="token function">plus</span><span class="token punctuation">(</span>increment<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Counter <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">Counter</span><span class="token punctuation">(</span>dayIndex <span class="token operator">+</span> increment<span class="token punctuation">)</span>
@@ -473,8 +473,8 @@ operator <span class="token keyword">fun</span> Point<span class="token punctuat
     <span class="token keyword">val</span> counter <span class="token operator">=</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
     <span class="token function">println</span><span class="token punctuation">(</span>counter <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Counter(dayIndex=6)</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="“In”-操作符"><a href="#“In”-操作符" class="headerlink" title="“In” 操作符"></a>“In” 操作符</h4><p><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181616.png" alt></p>
-<h4 id="索引访问操作符"><a href="#索引访问操作符" class="headerlink" title="索引访问操作符"></a>索引访问操作符</h4><p>方括号转换为调用带有适当数量参数的 get 和 set。<br><img src="https://raw.githubusercontent.com/congwiny/BlogPics/master/img/20190829181625.png" alt></p>
+<h4 id="“In”-操作符"><a href="#“In”-操作符" class="headerlink" title="“In” 操作符"></a>“In” 操作符</h4><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181616.png" alt></p>
+<h4 id="索引访问操作符"><a href="#索引访问操作符" class="headerlink" title="索引访问操作符"></a>索引访问操作符</h4><p>方括号转换为调用带有适当数量参数的 get 和 set。<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/img/20190829181625.png" alt></p>
 <h4 id="中缀操作符"><a href="#中缀操作符" class="headerlink" title="中缀操作符"></a>中缀操作符</h4><p>标有 infix 关键字的函数也可以使用中缀表示法（忽略该调用的点与圆括号）调用。<br>中缀函数必须满足以下要求：</p>
 <pre><code>它们必须是成员函数或扩展函数；
 
@@ -979,7 +979,7 @@ infix <span class="token keyword">fun</span> Person<span class="token punctuatio
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">22.2k</span>
+                <span class="white-color">22.1k</span>
             
             <br/>
             <span id="sitetime"></span>
