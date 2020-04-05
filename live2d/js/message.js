@@ -170,7 +170,7 @@ if (!norunFlag){
                         text = '嗨~ 快来逗我玩吧！';
                     }
                 } else {
-                    text = '欢迎阅读<span style="color:#00FF00;">「 ' + document.title.split(' | ')[0] + ' 」</span>';
+                    text = '欢迎阅读<span style="color:#00FFFF;">「 ' + document.title.split(' | ')[0] + ' 」</span>';
                 }
             }
         } else {
