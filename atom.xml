@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://congwiny.com/"/>
-  <updated>2020-04-05T09:38:56.851Z</updated>
+  <updated>2020-04-18T13:37:33.365Z</updated>
   <id>https://congwiny.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为Android Studio工程添加仪器单元测试</title>
+    <link href="https://congwiny.com/2019/10/09/wei-android-studio-gong-cheng-tian-jia-yi-qi-dan-yuan-ce-shi/"/>
+    <id>https://congwiny.com/2019/10/09/wei-android-studio-gong-cheng-tian-jia-yi-qi-dan-yuan-ce-shi/</id>
+    <published>2019-10-09T11:55:41.000Z</published>
+    <updated>2020-04-18T13:37:33.365Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;添加单元测试依赖&quot;&gt;&lt;a href=&quot;#添加单元测试依赖&quot; class=&quot;headerlink&quot; title=&quot;添加单元测试依赖&quot;&gt;&lt;/a&gt;添加单元测试依赖&lt;/h2&gt;&lt;p&gt;由于项目工程是从eclipse迁移过来的，并没有
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://congwiny.com/categories/Android/"/>
+    
+    
+      <category term="单元测试" scheme="https://congwiny.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="androidTest" scheme="https://congwiny.com/tags/androidTest/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Systrace性能分析</title>

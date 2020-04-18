@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>为Android Studio工程添加仪器单元测试</title>
+      <link href="/2019/10/09/wei-android-studio-gong-cheng-tian-jia-yi-qi-dan-yuan-ce-shi/"/>
+      <url>/2019/10/09/wei-android-studio-gong-cheng-tian-jia-yi-qi-dan-yuan-ce-shi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="添加单元测试依赖"><a href="#添加单元测试依赖" class="headerlink" title="添加单元测试依赖"></a>添加单元测试依赖</h2><p>由于项目工程是从eclipse迁移过来的，并没有 <code>androidTest</code> 这个目录。因此无法进行 <code>instrumented unit tests</code>。</p><p>目前项目还没有转到 <code>androidx</code> ，所以还是使用 <code>com.android.support.test</code> 版本的依赖。</p><p>为了支持 <code>instrumented unit tests</code> 需要在项目module的 <code>build.gradle</code> 添加相应的依赖：</p><pre class=" language-gradle"><code class="language-gradle">dependencies {    implementation fileTree(dir: 'libs', include: ['*.jar'])    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"    implementation 'com.android.support:appcompat-v7:27.1.1'    implementation 'com.android.support.constraint:constraint-layout:1.1.3'    //添加以下单元测试需要的依赖    testImplementation 'junit:junit:4.12'    androidTestImplementation 'com.android.support.test:runner:1.0.2'    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'}</code></pre><h2 id="设置测试工具运行器"><a href="#设置测试工具运行器" class="headerlink" title="设置测试工具运行器"></a>设置测试工具运行器</h2><p>为了使用 <code>JUnit 4</code> 测试类，需要将 <code>AndroidJUnitRunner</code> 指定为项目中的默认测试工具运行器。</p><p>在项目module的 <code>build.gradle</code> 添加以下配置：</p><pre class=" language-gradle"><code class="language-gradle">android {    defaultConfig {        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"    }}</code></pre><h2 id="指定-androidTest-代码目录"><a href="#指定-androidTest-代码目录" class="headerlink" title="指定  androidTest  代码目录"></a>指定  <strong>androidTest</strong>  代码目录</h2><p>在项目module的 <code>build.gradle</code> 添加 <code>androidTest</code> 配置：</p><pre class=" language-gradle"><code class="language-gradle">sourceSets {    main {        ...    }    //这里添加androidTest配置    androidTest{        java.srcDirs = ['androidTest/java']    }    test {        java.srcDirs = ['test/java']    }}</code></pre><p>然后在项目module的根目录创建 <code>androidTest</code>/ <code>java</code> 目录。</p><p>在 <code>androidTest</code>/ <code>java</code> 目录下创建包，然后创建测试代码。</p><p><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/androidTest/androidTest_folder.png" alt></p><p><code>ExampleInstrumentedTest2</code> 测试代码如下：</p><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>test<span class="token punctuation">.</span>InstrumentationRegistry<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>test<span class="token punctuation">.</span>runner<span class="token punctuation">.</span>AndroidJUnit4<span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>Assert<span class="token punctuation">.</span>assertEquals<span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>Test<span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>runner<span class="token punctuation">.</span>RunWith<span class="token comment" spellcheck="true">/** * Instrumented test, which will execute on an Android device. * * See [testing documentation](http://d.android.com/tools/testing). */</span><span class="token annotation builtin">@RunWith</span><span class="token punctuation">(</span>AndroidJUnit4<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">class</span> ExampleInstrumentedTest2 <span class="token punctuation">{</span>    <span class="token annotation builtin">@Test</span>    <span class="token keyword">fun</span> <span class="token function">useAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// Context of the app under test.</span>        <span class="token keyword">val</span> appContext <span class="token operator">=</span> InstrumentationRegistry<span class="token punctuation">.</span><span class="token function">getInstrumentation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>targetContext        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"com.congwiny.test"</span><span class="token punctuation">,</span> appContext<span class="token punctuation">.</span>packageName<span class="token punctuation">)</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><h2 id="配置测试矩阵并运行测试"><a href="#配置测试矩阵并运行测试" class="headerlink" title="配置测试矩阵并运行测试"></a>配置测试矩阵并运行测试</h2><ol><li>从主菜单中单击  <strong>Run</strong> &gt; <strong>Edit Configurations</strong> 配置</li><li>点击 <strong>Add New Configuration</strong> 并选择 <strong>Android Instrumented Tests</strong></li><li>在 <strong>Android Instrumented Tests</strong> 对话框中配置如下，配置完成之后然后点击 <code>Ok</code> 按钮退出对话框<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/androidTest/androidTest_config.png" alt></li><li>点击 <strong>Run</strong> 运行测试<br><img src="https://cdn.jsdelivr.net/gh/congwiny/BlogPics@master/androidTest/androidTest_run_demo.png" alt></li></ol><blockquote><p><a href="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests" target="_blank" rel="noopener">Build instrumented unit tests</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 单元测试 </tag>
+            
+            <tag> androidTest </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Systrace性能分析</title>
       <link href="/2019/09/26/shi-yong-systrace-xing-neng-fen-xi/"/>
       <url>/2019/09/26/shi-yong-systrace-xing-neng-fen-xi/</url>

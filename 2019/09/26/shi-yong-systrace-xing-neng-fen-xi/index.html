@@ -613,9 +613,9 @@ Systrace环境配置">
 
     #vcomments a {
         padding: 0 2px;
-        color: #42b983;
+        color: #4cbf30;
         font-weight: 500;
-        text-decoration: underline;
+        text-decoration: none;
     }
 
     #vcomments img {
@@ -824,8 +824,14 @@ Systrace环境配置">
 </style>
 
 <div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
 </div>
+
 
 <script src="/libs/valine/av-min.js"></script>
 <script src="/libs/valine/Valine.min.js"></script>
@@ -850,31 +856,30 @@ Systrace环境配置">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/26/shi-yong-systrace-xing-neng-fen-xi/">
+                <a href="/2019/10/09/wei-android-studio-gong-cheng-tian-jia-yi-qi-dan-yuan-ce-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="使用Systrace性能分析">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="为Android Studio工程添加仪器单元测试">
                         
-                        <span class="card-title">使用Systrace性能分析</span>
+                        <span class="card-title">为Android Studio工程添加仪器单元测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Systrace 概览https://developer.android.com/studio/profile/systrace
-Systrace环境配置
+                            添加单元测试依赖由于项目工程是从eclipse迁移过来的，并没有 androidTest 这个目录。因此无法进行 instrumented unit tests。
+目前项目还没有转到 androidx ，所以还是使用 com.android
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -887,16 +892,15 @@ Systrace环境配置
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/systrace/" target="_blank">
-                        <span class="chip bg-color">systrace</span>
+                    <a href="/tags/单元测试/" target="_blank">
+                        <span class="chip bg-color">单元测试</span>
                     </a>
                     
-                    <a href="/tags/性能分析/" target="_blank">
-                        <span class="chip bg-color">性能分析</span>
+                    <a href="/tags/androidTest/" target="_blank">
+                        <span class="chip bg-color">androidTest</span>
                     </a>
                     
                 </div>
@@ -1102,11 +1106,11 @@ RotateDrawableRotateDrawable 用来对 Drawable
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            &copy;2019 Congwiny.
+            &copy;2019-2020 CONGWINY.
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">22.1k</span>
+                <span class="white-color">22.6k</span>
             
             <br/>
             <span id="sitetime"></span>
