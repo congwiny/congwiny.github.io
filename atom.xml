@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://congwiny.com/"/>
-  <updated>2020-04-18T13:37:33.365Z</updated>
+  <updated>2020-05-01T14:56:49.889Z</updated>
   <id>https://congwiny.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sublime Text中使用PlantUML</title>
+    <link href="https://congwiny.com/2020/03/30/sublime-text-zhong-shi-yong-plantuml/"/>
+    <id>https://congwiny.com/2020/03/30/sublime-text-zhong-shi-yong-plantuml/</id>
+    <published>2020-03-30T14:32:15.000Z</published>
+    <updated>2020-05-01T14:56:49.889Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Sublime-Text中使用PlantUML&quot;&gt;&lt;a href=&quot;#Sublime-Text中使用PlantUML&quot; class=&quot;headerlink&quot; title=&quot;Sublime Text中使用PlantUML&quot;&gt;&lt;/a&gt;Sublime
+        
+      
+    
+    </summary>
+    
+      <category term="Tools" scheme="https://congwiny.com/categories/Tools/"/>
+    
+    
+      <category term="plantuml" scheme="https://congwiny.com/tags/plantuml/"/>
+    
+      <category term="uml" scheme="https://congwiny.com/tags/uml/"/>
+    
+  </entry>
   
   <entry>
     <title>为Android Studio工程添加仪器单元测试</title>
@@ -304,7 +332,7 @@
     <link href="https://congwiny.com/2019/08/11/coroutine/"/>
     <id>https://congwiny.com/2019/08/11/coroutine/</id>
     <published>2019-08-11T14:12:00.000Z</published>
-    <updated>2020-04-05T12:58:08.004Z</updated>
+    <updated>2020-05-01T09:55:07.241Z</updated>
     
     <summary type="html">
     
