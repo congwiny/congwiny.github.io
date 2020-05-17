@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://congwiny.com/"/>
-  <updated>2020-05-12T00:45:13.309Z</updated>
+  <updated>2020-05-17T14:48:32.785Z</updated>
   <id>https://congwiny.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用PlantUml绘制类图1</title>
+    <link href="https://congwiny.com/2020/05/17/plantuml-class-p1/"/>
+    <id>https://congwiny.com/2020/05/17/plantuml-class-p1/</id>
+    <published>2020-05-17T12:15:30.000Z</published>
+    <updated>2020-05-17T14:48:32.785Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;使用PlantUml绘制类图1&quot;&gt;&lt;a href=&quot;#使用PlantUml绘制类图1&quot; class=&quot;headerlink&quot; title=&quot;使用PlantUml绘制类图1&quot;&gt;&lt;/a&gt;使用PlantUml绘制类图1&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Tools" scheme="https://congwiny.com/categories/Tools/"/>
+    
+    
+      <category term="plantuml" scheme="https://congwiny.com/tags/plantuml/"/>
+    
+      <category term="uml" scheme="https://congwiny.com/tags/uml/"/>
+    
+      <category term="class" scheme="https://congwiny.com/tags/class/"/>
+    
+  </entry>
   
   <entry>
     <title>使用PlantUml绘制时序图2</title>
@@ -101,28 +131,6 @@
       <category term="plantuml" scheme="https://congwiny.com/tags/plantuml/"/>
     
       <category term="uml" scheme="https://congwiny.com/tags/uml/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://congwiny.com/2020/03/30/android-install-termux/"/>
-    <id>https://congwiny.com/2020/03/30/android-install-termux/</id>
-    <published>2020-03-30T14:32:15.000Z</published>
-    <updated>2020-05-10T08:27:27.567Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Android手机安装Termux&quot;&gt;&lt;a href=&quot;#Android手机安装Termux&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
     
   </entry>
   
